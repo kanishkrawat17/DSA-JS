@@ -1,21 +1,26 @@
-function subsetsOfArray(arr) {
-    let result = "";
-    let limit = Math.pow(2,arr.length);
+/**
+ * 
+ * https://leetcode.com/problems/subsets/description/
+ */
+
+var subsets = function(arr) {
+    let limit = Math.pow(2, arr.length);
+    let subsets = [];
 
     for(let i = limit-1; i >= 0; i--) {
-        let digit = i;
-        for(let j = arr.length-1; j >= 0; j--){
-            let num = digit % 2;
-            digit = Math.floor(digit / 2);
-            if(num == 0){
-                result =  " _ " + result;
-            } else {
-                result = ` ${arr[j]} ` + result;
+        let num = i;
+        let subset=[];
+        for(let j = arr.length-1; j >= 0; j--) {
+            let digit = num % 2;
+            num = Math.floor(num / 2);
+            if(digit != 0) {
+                subset.push(arr[j]);
             }
         }
-        result = "\n" + result;
+        subsets.push(subset);
     }
-    console.log(result);
+    return subsets;
 };
 
-subsetsOfArray([10,20,30])
+
+subsets([10,20,30])

@@ -1,3 +1,4 @@
+// https://leetcode.com/problems/binary-search/submissions/
 const binarySearch = (arr, element) => {
     let start = 0, end = arr.length-1;
     
